@@ -31,10 +31,9 @@ exports.userLogin =async(req,res)=>{
     const {email,password}=req.body
     try {
         const existingUser = await users.findOne({email,password})
+        console.log(existingUser)
         if(existingUser){
-            const secret_key= "secretkey@123"
-            const token=jwt.sign({email:existingUser.email,username:existingUser.username,userId:existingUser._id},secret_key)
-            console.log(token)
+            const token=jwt.sign({email:existingUser.email,username:existingUser.username,userId:existingUser._id},process.env.secret_key)
             const rest= {token,username:existingUser.username}
             console.log(rest)
             console.log(existingUser)

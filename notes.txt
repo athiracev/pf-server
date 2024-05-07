@@ -1,0 +1,21 @@
+JSON 
+
+mechanism userd for authentication
+need jsonwebtoken package
+generates a token value if the given 
+
+
+Middleware:
+ - special fun that can process requests in bw client and server  and block the req if needed
+
+ const middleware(req,res,next)=>{
+    req
+    res.status
+    next() used to pass the data to server
+ }
+
+
+
+req - header,body 
+header - meta data
+body - data or payload 
