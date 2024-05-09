@@ -18,6 +18,9 @@ pfServer.use(express.json())
 //configuring routes to server
 pfServer.use(router)
 
+//serving upload files to client side
+pfServer.use('/uploads',express.static('./uploads'))
+
 const PORT=3000
 
 //calling listen method to implement listen mode for server to run
