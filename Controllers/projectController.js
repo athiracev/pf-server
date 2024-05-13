@@ -96,13 +96,14 @@ exports.userProjects= async(req,res)=>{
 
 
 exports.editProject=async(req,res)=>{
-    const{title,overview,language,github,demo,image}=req.body
+    const{title,overview,language,github,demo,image}=req.body // this fields are given in frondend side with in double quotes
     const userId=req.payload
     const projectImage = req.file?req.file.filename:image
     const {pid}=req.params
 
     try {
         const updateProject = await projects.findByIdAndUpdate({_id:pid},
+            //in below lines key value pairs are in the form of model field: field in req.body
             {title,overview,languages:language,github,demo,image:projectImage,userId},{new:true} //should make new=true otherwise updated data won't store in db
         )
         await updateProject.save()  //update data to mongodb
