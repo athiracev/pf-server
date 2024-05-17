@@ -55,9 +55,16 @@ exports.homeProjects = async (req, res) => {
 
 
 exports.allProjects = async (req, res) => {
+    const search = req.query.search
+    console.log(search)
     try {
 
-        const result = await projects.find()
+        const query ={
+            languages:{$regex:search,$options:'i'}
+        }
+
+        const result = await projects.find(query)
+        console.log(result)
         if (result) {
             res.status(200).json(result)
         } else {
@@ -129,4 +136,10 @@ exports.removeProject = async (req, res) => {
 
     }
 }
+
+
+
+
+
+
 
